@@ -1,0 +1,23 @@
+--- a/source/geometry/solids/specific/src/G4Voxelizer.cc
++++ b/source/geometry/solids/specific/src/G4Voxelizer.cc
+@@ -350,10 +350,9 @@
+   {
+     std::vector<G4double>& boundary = boundaries[k];
+     G4int voxelsCount = (G4int)boundary.size() - 1;
+-    G4SurfBits& bitmask = bitmasks[k];
+-
+     if (!countsOnly)
+     {
++      G4SurfBits& bitmask = bitmasks[k];
+       bitmask.Clear();
+ #ifdef G4SPECSDEBUG
+       G4cout << "Allocating bitmask..." << G4endl;
+@@ -389,7 +388,7 @@
+       {
+         if (!countsOnly)
+         {
+-          bitmask.SetBitNumber(i*bitsPerSlice+(G4int)j);
++          bitmasks[k].SetBitNumber(i*bitsPerSlice+(G4int)j);
+         }
+         candidatesCount[i]++;
+         ++i;

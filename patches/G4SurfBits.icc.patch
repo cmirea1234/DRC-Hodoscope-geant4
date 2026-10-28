@@ -1,0 +1,11 @@
+--- a/source/geometry/solids/specific/include/G4SurfBits.icc
++++ b/source/geometry/solids/specific/include/G4SurfBits.icc
+@@ -38,7 +38,7 @@
+       if (new_size < 100 * 1024 * 1024) { new_size *= 2; }
+       unsigned char *old_location = fAllBits;
+       fAllBits = new unsigned char[new_size];
+-      std::memcpy(fAllBits,old_location,fNBytes);
++      if (fNBytes != 0) { std::memcpy(fAllBits,old_location,fNBytes); }
+       std::memset(fAllBits+fNBytes ,0, new_size-fNBytes);
+       fNBytes = new_size;
+       delete [] old_location;

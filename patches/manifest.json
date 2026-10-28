@@ -1,0 +1,17 @@
+{
+  "source/intercoms/src/G4UIparsing.cc": {
+    "original_sha256": "2958744ce998cbecd66c0610f0dbef7778e10993e4b18fe54a4a523a8eb84937",
+    "patched_sha256": "d1f0b73c6bf00bfeb69613f4a806c81ca5bd059c9b84aa73203543260950e310",
+    "patch": "G4UIparsing.cc.patch"
+  },
+  "source/geometry/solids/specific/src/G4Voxelizer.cc": {
+    "original_sha256": "5963d7187a5168b207728419b0f583d282ac530f100069fe76b82658ff8ff729",
+    "patched_sha256": "58e9984d70b96c6c575abe4b7feec53ad4c60474940ce97d175c2644d5662ef8",
+    "patch": "G4Voxelizer.cc.patch"
+  },
+  "source/geometry/solids/specific/include/G4SurfBits.icc": {
+    "original_sha256": "ad8ce884213618cfe2d0431f8c37f796cbfaf3391080db15274657ec30839b98",
+    "patched_sha256": "277c41e0e9dfb568017e12bb13863d581823b8508ffd02e64439ce2c2d99b5bf",
+    "patch": "G4SurfBits.icc.patch"
+  }
+}

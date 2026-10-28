@@ -1,0 +1,19 @@
+{
+  "name": "sides32",
+  "case": "sides32",
+  "seed": 261026304,
+  "target": 5,
+  "fixed": false,
+  "status": "PASS",
+  "started": 1793088082.5654693,
+  "pid": 2827275,
+  "generated": 1240,
+  "trigger_count": 5,
+  "produced": 33509,
+  "detected": 185,
+  "loss_summary_rows": 20,
+  "channel_rows": 640,
+  "root_sha256": "c39046cd75e28dbee3448456f9f8500b04faf8408cebc76acab1ce2bf6e879a0",
+  "root_bytes": 932953,
+  "elapsed_seconds": 145.81859517097473
+}

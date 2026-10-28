@@ -1,0 +1,16 @@
+build*/
+runs/
+local_check/
+__pycache__/
+*.pyc
+*.o
+*.so
+*.so.*
+*.root
+*.log
+core
+core.*
+.env
+.venv/
+*.pem
+*.key

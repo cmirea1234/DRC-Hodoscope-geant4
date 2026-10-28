@@ -1,0 +1,50 @@
+--- a/source/intercoms/src/G4UIparsing.cc
++++ b/source/intercoms/src/G4UIparsing.cc
+@@ -50,7 +50,10 @@
+ 
+     // --- the following is used by CheckNewValue() -------
+     using yystype = G4UItokenNum::yystype;
+-    using tokenNum = G4UItokenNum::tokenNum;
++    // Lexer returns both named tokens and EOF (-1). Keep the parser cursor
++    // signed rather than storing EOF in an enum whose values are all >= 0.
++    // The semantic yystype token enum and public UI API remain unchanged.
++    using tokenNum = G4int;
+ 
+     //  syntax nodes
+     yystype Expression();
+@@ -387,22 +390,22 @@
+   switch (token) {
+     case IDENTIFIER:
+       result.S = yylval.S;
+-      result.type = token;
++      result.type = IDENTIFIER;
+       token = Yylex();
+       break;
+     case CONSTINT:
+       result.I = yylval.I;
+-      result.type = token;
++      result.type = CONSTINT;
+       token = Yylex();
+       break;
+     case CONSTLONG:
+       result.L = yylval.L;
+-      result.type = token;
++      result.type = CONSTLONG;
+       token = Yylex();
+       break;
+     case CONSTDOUBLE:
+       result.D = yylval.D;
+-      result.type = token;
++      result.type = CONSTDOUBLE;
+       token = Yylex();
+       break;
+     case '(':
+@@ -555,7 +558,7 @@
+ 
+ // --------------------- utility functions ----------------------------
+ 
+-inline tokenNum G4UIRangeChecker::Yylex()  // reads input and returns token number, KR486
++inline G4int G4UIRangeChecker::Yylex()  // reads input and returns token number, KR486
+ {  // (returns EOF)
+   G4int c;
+   G4String buf;

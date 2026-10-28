@@ -1,0 +1,116 @@
+# Effective tested settings; target, seed and output supplied by run.py.
+/hodo/activePlaneOverlap true
+/hodo/fibreFarEndExtension 40 mm
+/hodo/fanoutPreview true
+/hodo/fanoutLinearFanout false
+/hodo/fanoutPreviewLite false
+/hodo/fibreOverlapClearance 0.015 mm
+/hodo/layoutPreset v18d_compat
+/hodo/roundActiveFacetRefinement 1
+/hodo/roundCladdingHierarchy sibling_shells
+/hodo/squareCladdingHierarchy nested
+/hodo/roundMiterJointOverlap 0 nm
+/hodo/concreteThickness 15 cm
+/hodo/blackoutThickness 0.2 mm
+/hodo/cosmicZenithPower 2
+/hodo/hitThreshold 0.05 MeV
+/hodo/triggerLength 60 mm
+/hodo/triggerWidth 10 mm
+/hodo/triggerThickness 5 mm
+/hodo/trigger1Z 80 mm
+/hodo/h1FanoutZ 20 mm
+/hodo/h2FanoutZ -20 mm
+/hodo/trigger2Z -75 mm
+/hodo/alignmentReference ideal_axis
+/hodo/trigger1OffsetX -25 mm
+/hodo/trigger1OffsetY 0 mm
+/hodo/trigger2OffsetX 0 mm
+/hodo/trigger2OffsetY -25 mm
+/hodo/h2OffsetX 0 mm
+/hodo/h2OffsetY 0 mm
+/hodo/trigger1Yaw 0 deg
+/hodo/trigger2Yaw 0 deg
+/hodo/h1xYaw 0 deg
+/hodo/h1yYaw 0 deg
+/hodo/h2xYaw 0 deg
+/hodo/h2yYaw 0 deg
+/hodo/h2ModuleRotate180 true
+/hodo/h1CladdingModel single
+/hodo/h2CladdingModel single
+/hodo/h1EmissionModel scsf78_22
+/hodo/h1AttenuationLength 4.67 m
+/hodo/h2AttenuationLength 3.5 m
+/hodo/fanoutReferenceTransmissionH1 1
+/hodo/fanoutReferenceTransmissionH2 1
+/hodo/fanoutChannelRms 0
+/hodo/bendTransmission 1
+/hodo/endFaceEfficiency 1
+/hodo/couplingEfficiency 1
+/hodo/pdeScale 1
+/hodo/stressLossPerM 0
+/hodo/crackLossPerM 0
+/hodo/packingLossPerM 0
+/hodo/adhesiveLossPerM 0
+/hodo/h1CladdingDamagePerM 0
+/hodo/h2CladdingDamagePerM 0
+/hodo/effectiveLightScaleH1 1
+/hodo/effectiveLightScaleH2 1
+/hodo/sipmModel S14160-1310PS
+/hodo/biasVoltage 45
+/hodo/gainBoardH1X 3
+/hodo/gainBoardH1Y 1
+/hodo/gainBoardH2X 2
+/hodo/gainBoardH2Y 4
+/hodo/darkCountRate 0 Hz
+/hodo/electronicsNoise 0
+/hodo/crossTalkProbability 0
+/hodo/afterPulseProbability 0
+/run/verbose 1
+/event/verbose 0
+/tracking/verbose 0
+/hodo/h2SquareFibreCount 29
+/hodo/h1OffsetX -0.25 mm
+/hodo/h1OffsetY -0.25 mm
+/hodo/h1ScintillationYield 14000
+/hodo/h2ScintillationYield 8000
+/hodo/scintillationYieldScale 1
+/hodo/triggerScintillationYield 0
+/hodo/useMeasuredNoise true
+/hodo/adcNoiseScale 1
+/hodo/useWaveformDigitization true
+/hodo/adcSamplePeriod 0.2 ns
+/hodo/pedestalWindowSamples 100
+/hodo/peakWindowSamples 400
+/hodo/adcPeakWindowDelay -20 ns
+/hodo/opticalPhotonMaxTime 200 ns
+/hodo/pathOnlyMuonTruth false
+/hodo/roundSweepRepresentation tessellated
+/hodo/lightDirectShell true
+/hodo/blackoutCoverAllFibres true
+/hodo/lightStraightFibres false
+/hodo/lightStraightFanout false
+/hodo/lightRoundSegments 47
+/hodo/lightMaxVoxels 4000
+/hodo/roundTessellatedSides 32
+/hodo/recordPhotonNtuple false
+/hodo/recordPhotonAuditRows false
+/hodo/recordPhotonAuditNtuple true
+/hodo/recordSpatialClosureNtuples false
+/hodo/recordGeometryControlNtuples false
+/hodo/recordChannelNtuple true
+/hodo/recordActiveCoreChordBranches true
+/hodo/cosmicBeam true
+/hodo/cosmicPositionModel target_backproject
+/hodo/cosmicAngularDistribution modified_gaisser_joint
+/hodo/cosmicEnergySpectrum modified_gaisser
+/hodo/cosmicMinEnergy 0.2 GeV
+/hodo/cosmicMaxEnergy 1000 GeV
+/hodo/maxZenith 45 deg
+/hodo/cosmicTargetHalfX 16 mm
+/hodo/cosmicTargetHalfY 16 mm
+/hodo/triggerCoincidenceMode t1t2
+/hodo/skipOpticalUnlessT1T2 true
+/hodo/recordSelectedDiagnosticsOnly true
+/hodo/unselectedEventStride 1
+/hodo/skipUntriggeredDigitization false
+/hodo/useBuilding false

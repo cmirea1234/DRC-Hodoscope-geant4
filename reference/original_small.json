@@ -1,0 +1,44 @@
+{
+  "generated": 1240,
+  "T1T2": 5,
+  "primary_prefix_matched": 1240,
+  "produced": 40188,
+  "detected": 360,
+  "counts": {
+    "active_core": {
+      "MID1": 3,
+      "MID9": 4,
+      "MID15": 3,
+      "MID13": 3,
+      "H1": 3,
+      "H2": 3,
+      "all_four": 3
+    },
+    "core": {
+      "MID1": 3,
+      "MID9": 5,
+      "MID15": 3,
+      "MID13": 5,
+      "H1": 3,
+      "H2": 3,
+      "all_four": 3
+    },
+    "channel_threshold_hit": {
+      "H1": 3,
+      "H2": 3,
+      "all_four": 3
+    }
+  },
+  "fullchain_validation": {
+    "generated": 1240,
+    "trigger_count": 5,
+    "produced": 40188,
+    "detected": 360,
+    "loss_summary_rows": 20,
+    "channel_rows": 640
+  },
+  "root_sha256": "7c93e2eaa68bc0ccc0158d825a1dffd0159245c1b5380360d8caaa3e7a28a5d8",
+  "name": "fullchain5",
+  "status": "PASS",
+  "elapsed_seconds": 206.29098296165466
+}
