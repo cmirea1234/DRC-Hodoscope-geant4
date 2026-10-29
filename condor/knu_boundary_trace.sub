@@ -1,0 +1,17 @@
+universe = vanilla
+executable = /u/user/chjoung/DRC-Hodoscope-geant4/scripts/knu_boundary_trace.sh
+arguments = $(ClusterId) $(ProcId)
+initialdir = /u/user/chjoung/DRC-Hodoscope-geant4
+should_transfer_files = NO
+getenv = False
+request_cpus = 2
+request_memory = 4 GB
+request_disk = 4 GB
+requirements = (OpSysAndVer == "AlmaLinux9") && (TARGET.FileSystemDomain == "knu.ac.kr")
+log = runs/knu_diagnostic_20261029/boundary.$(ClusterId).log
+output = runs/knu_diagnostic_20261029/boundary.$(ClusterId).$(ProcId).out
+error = runs/knu_diagnostic_20261029/boundary.$(ClusterId).$(ProcId).err
+notification = Never
+periodic_hold = (JobStatus == 2) && ((CurrentTime - JobCurrentStartExecutingDate) > 14400)
+on_exit_hold = (ExitBySignal == True) || (ExitCode != 0)
+queue 1

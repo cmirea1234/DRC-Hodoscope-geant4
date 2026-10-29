@@ -1,0 +1,18 @@
+{
+  "name": "electron_3gev_rigid_rotation_check",
+  "particle": "e-",
+  "kinetic_energy_GeV": 3.0,
+  "position_mm": [
+    51.792110243935554,
+    -21.421464178536063,
+    176.14654249162334
+  ],
+  "direction": [
+    -0.21194740162623704,
+    0.07614309452357376,
+    -0.9743102832774889
+  ],
+  "generated_events": 1,
+  "seed": 261029200,
+  "note": "One electron, beam transformed together with modules_rigid_example; coordinate validation only."
+}

@@ -1,0 +1,21 @@
+# One build + two sequential five-trigger checks; no production submission.
+universe = vanilla
+executable = /u/user/chjoung/DRC-Hodoscope-geant4/scripts/knu_smoke.sh
+arguments = $(ClusterId) $(ProcId)
+initialdir = /u/user/chjoung/DRC-Hodoscope-geant4
+should_transfer_files = NO
+getenv = False
+request_cpus = 2
+request_memory = 4 GB
+request_disk = 2 GB
+requirements = (OpSysAndVer == "AlmaLinux9") && (TARGET.FileSystemDomain == "knu.ac.kr")
+log = runs/knu_20261028_1512/condor.$(ClusterId).log
+output = runs/knu_20261028_1512/condor.$(ClusterId).$(ProcId).out
+error = runs/knu_20261028_1512/condor.$(ClusterId).$(ProcId).err
+notification = Never
+# Use KNU's default CPU queue (80 h); cap this small check at 3 h.
+periodic_hold = (JobStatus == 2) && ((CurrentTime - JobCurrentStartExecutingDate) > 10800)
+periodic_hold_reason = "Initial smoke-check exceeded three hours; inspect before retry"
+on_exit_hold = (ExitBySignal == True) || (ExitCode != 0)
+# No accounting_group override: KNU assigns group_cms.cms.<owner>.
+queue 1

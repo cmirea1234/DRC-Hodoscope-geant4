@@ -1,0 +1,22 @@
+# One allocation: original then light32, on the same worker node.
+universe = vanilla
+executable = /u/user/chjoung/DRC-Hodoscope-geant4/scripts/knu_500.sh
+initialdir = /u/user/chjoung/DRC-Hodoscope-geant4
+target = 500
+seed = 261028500
+arguments = $(ClusterId) $(ProcId) $(target) $(seed)
+should_transfer_files = NO
+getenv = False
+request_cpus = 1
+request_memory = 4 GB
+request_disk = 4 GB
+requirements = (OpSysAndVer == "AlmaLinux9") && (TARGET.FileSystemDomain == "knu.ac.kr")
+log = runs/knu_500_20261028_1643/condor.$(ClusterId).log
+output = runs/knu_500_20261028_1643/condor.$(ClusterId).$(ProcId).out
+error = runs/knu_500_20261028_1643/condor.$(ClusterId).$(ProcId).err
+notification = Never
+# Each simulation has a 12 h timeout; allow 25 h for both and validation.
+periodic_hold = (JobStatus == 2) && ((CurrentTime - JobCurrentStartExecutingDate) > 90000)
+periodic_hold_reason = "500-trigger pair exceeded 25 hours; inspect logs before retry"
+on_exit_hold = (ExitBySignal == True) || (ExitCode != 0)
+queue 1

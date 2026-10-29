@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "name": "original_rigid_rotation_example",
+  "world_half_size_mm": [
+    400,
+    400,
+    400
+  ],
+  "modules": {
+    "T1": {
+      "position_mm": [
+        13.044088571827757,
+        -21.611899309114666,
+        112.71504754661274
+      ],
+      "rotation_deg": [
+        7,
+        11,
+        13
+      ]
+    },
+    "T2": {
+      "position_mm": [
+        9.119358099421778,
+        -28.59772334766281,
+        -46.06402775369695
+      ],
+      "rotation_deg": [
+        7,
+        11,
+        13
+      ]
+    },
+    "H1": {
+      "position_mm": [
+        24.23894803252474,
+        -11.522861890471475,
+        49.486205665549775
+      ],
+      "rotation_deg": [
+        7,
+        11,
+        13
+      ]
+    },
+    "H2": {
+      "position_mm": [
+        15.76105196747526,
+        -8.477138109528525,
+        10.513794334450221
+      ],
+      "rotation_deg": [
+        7,
+        11,
+        13
+      ]
+    }
+  },
+  "note": "Coordinate-transform validation example, not a planned beam-test installation."
+}

@@ -1,0 +1,10 @@
+{
+  "name": "electron_3gev_central_pencil_smoke",
+  "particle": "e-",
+  "kinetic_energy_GeV": 3.0,
+  "position_mm": [0, 0, 150],
+  "direction": [0, 0, -1],
+  "generated_events": 10,
+  "seed": 261029200,
+  "note": "Fixed generated-event smoke test, zero beam width/divergence. Not the final KEK beam distribution."
+}

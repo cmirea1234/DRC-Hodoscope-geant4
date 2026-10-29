@@ -1,0 +1,11 @@
+{
+  "schema_version": 2,
+  "name": "original_modules_baseline",
+  "world_half_size_mm": [250, 250, 250],
+  "modules": {
+    "T1": {"position_mm": [-25, 0, 80], "rotation_deg": [0, 0, 0]},
+    "T2": {"position_mm": [0, -25, -75], "rotation_deg": [0, 0, 0]},
+    "H1": {"position_mm": [0, 0, 20], "rotation_deg": [0, 0, 0]},
+    "H2": {"position_mm": [0, 0, -20], "rotation_deg": [0, 0, 0]}
+  }
+}

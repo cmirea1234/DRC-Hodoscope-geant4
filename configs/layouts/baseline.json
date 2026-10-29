@@ -1,0 +1,24 @@
+{
+  "name": "validated_cosmic_layout",
+  "note": "Existing layout; future upstream-trigger spacing is not yet specified.",
+  "parameters": {
+    "trigger1Z": {"value": 80, "unit": "mm"},
+    "h1FanoutZ": {"value": 20, "unit": "mm"},
+    "h2FanoutZ": {"value": -20, "unit": "mm"},
+    "trigger2Z": {"value": -75, "unit": "mm"},
+    "trigger1OffsetX": {"value": -25, "unit": "mm"},
+    "trigger1OffsetY": {"value": 0, "unit": "mm"},
+    "trigger2OffsetX": {"value": 0, "unit": "mm"},
+    "trigger2OffsetY": {"value": -25, "unit": "mm"},
+    "h1OffsetX": {"value": -0.25, "unit": "mm"},
+    "h1OffsetY": {"value": -0.25, "unit": "mm"},
+    "h2OffsetX": {"value": 0, "unit": "mm"},
+    "h2OffsetY": {"value": 0, "unit": "mm"},
+    "trigger1Yaw": {"value": 0, "unit": "deg"},
+    "trigger2Yaw": {"value": 0, "unit": "deg"},
+    "h1xYaw": {"value": 0, "unit": "deg"},
+    "h1yYaw": {"value": 0, "unit": "deg"},
+    "h2xYaw": {"value": 0, "unit": "deg"},
+    "h2yYaw": {"value": 0, "unit": "deg"}
+  }
+}
