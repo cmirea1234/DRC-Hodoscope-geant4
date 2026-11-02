@@ -1,0 +1,327 @@
+{
+  "status": "COMPLETE",
+  "expected_jobs": 10,
+  "validated_jobs": 10,
+  "target_total": 5000,
+  "validated_triggers": 5000,
+  "generated": 1103858,
+  "produced": 34627994,
+  "detected": 280343,
+  "conditional_hit_rates": {
+    "MID1": {
+      "count": 2346,
+      "denominator": 5000,
+      "fraction": 0.4692,
+      "wilson_95": [
+        0.4553962169489839,
+        0.48305107349083176
+      ]
+    },
+    "MID9": {
+      "count": 4231,
+      "denominator": 5000,
+      "fraction": 0.8462,
+      "wilson_95": [
+        0.8359350397342111,
+        0.8559334034390313
+      ]
+    },
+    "MID15": {
+      "count": 2382,
+      "denominator": 5000,
+      "fraction": 0.4764,
+      "wilson_95": [
+        0.46257982902623607,
+        0.4902564065055707
+      ]
+    },
+    "MID13": {
+      "count": 4743,
+      "denominator": 5000,
+      "fraction": 0.9486,
+      "wilson_95": [
+        0.9421277832433311,
+        0.9543834345715637
+      ]
+    },
+    "H1": {
+      "count": 1977,
+      "denominator": 5000,
+      "fraction": 0.3954,
+      "wilson_95": [
+        0.38193288914719653,
+        0.40902771409970945
+      ]
+    },
+    "H2": {
+      "count": 2252,
+      "denominator": 5000,
+      "fraction": 0.4504,
+      "wilson_95": [
+        0.4366526412594306,
+        0.4642235147735192
+      ]
+    },
+    "all_four": {
+      "count": 1759,
+      "denominator": 5000,
+      "fraction": 0.3518,
+      "wilson_95": [
+        0.33868209898435203,
+        0.365145447872163
+      ]
+    }
+  },
+  "sum_task_wall_seconds": 104481.37739831694,
+  "scope": "T1 AND T2 conditional response, not intrinsic detector efficiency; event identity is (seed,event).",
+  "model": "original",
+  "geant4": "11.4.1 + patches/manifest.json",
+  "binary_sha256": "12e7362974ac2bfd38644c82058346375b97ba910129bed3df37be5c1c7490e8",
+  "completed_kst": "2026-10-29T17:21:34.809183+09:00",
+  "campaign_elapsed_seconds": 20574.804002046585,
+  "payload_manifest_sha256": "04caa165d82d4c4a1da36ef8964fe6c1a1dffeab0b065f3c5f458699db77691e",
+  "patch_manifest_sha256": "79b062cf6e8e43377484cf3e8ed045c1bdaa0c1f91f126cb4052d2e0e7fd680a",
+  "termination_check": "All 10 independent runs completed successfully with exit code 0.",
+  "independent_runs": [
+    {
+      "seed": 261029500,
+      "target": 500,
+      "validation": {
+        "status": "PASS",
+        "generated": 113061,
+        "T1T2": 500,
+        "counts": {
+          "MID1": 252,
+          "MID9": 433,
+          "MID15": 262,
+          "MID13": 482,
+          "H1": 214,
+          "H2": 251,
+          "all_four": 193
+        },
+        "produced": 3584894,
+        "detected": 29059,
+        "root_sha256": "82f3f7ec38578c699dcea1960f3ebead560dd2c9b7ae2ee588c85029e5b56424"
+      },
+      "wall_seconds": 20566.058806253015,
+      "cpu_seconds": 20438.199507,
+      "max_child_rss_kib": 165968
+    },
+    {
+      "seed": 261030509,
+      "target": 500,
+      "validation": {
+        "status": "PASS",
+        "generated": 106507,
+        "T1T2": 500,
+        "counts": {
+          "MID1": 218,
+          "MID9": 406,
+          "MID15": 218,
+          "MID13": 477,
+          "H1": 182,
+          "H2": 207,
+          "all_four": 162
+        },
+        "produced": 3322857,
+        "detected": 26772,
+        "root_sha256": "632f3ce9212e8a71d899668477234f150eab232e9057ead93c0505d3032d228f"
+      },
+      "wall_seconds": 7068.535816713003,
+      "cpu_seconds": 7023.566499,
+      "max_child_rss_kib": 157576
+    },
+    {
+      "seed": 261031518,
+      "target": 500,
+      "validation": {
+        "status": "PASS",
+        "generated": 112930,
+        "T1T2": 500,
+        "counts": {
+          "MID1": 207,
+          "MID9": 421,
+          "MID15": 205,
+          "MID13": 466,
+          "H1": 172,
+          "H2": 188,
+          "all_four": 154
+        },
+        "produced": 3348189,
+        "detected": 27211,
+        "root_sha256": "f8b0dd8743649a57c9d1320acd6c8564e785a708a60ddcd1b5353cef48366fe0"
+      },
+      "wall_seconds": 5939.004968299996,
+      "cpu_seconds": 5899.05926,
+      "max_child_rss_kib": 158948
+    },
+    {
+      "seed": 261032527,
+      "target": 500,
+      "validation": {
+        "status": "PASS",
+        "generated": 103248,
+        "T1T2": 500,
+        "counts": {
+          "MID1": 231,
+          "MID9": 421,
+          "MID15": 243,
+          "MID13": 481,
+          "H1": 192,
+          "H2": 234,
+          "all_four": 176
+        },
+        "produced": 3404169,
+        "detected": 27527,
+        "root_sha256": "67c3f383883a336157e2787698bdea28ee3b1a2139f4b9daece0d5cac0811fe1"
+      },
+      "wall_seconds": 9745.80764523396,
+      "cpu_seconds": 9692.38199,
+      "max_child_rss_kib": 167968
+    },
+    {
+      "seed": 261033536,
+      "target": 500,
+      "validation": {
+        "status": "PASS",
+        "generated": 110919,
+        "T1T2": 500,
+        "counts": {
+          "MID1": 252,
+          "MID9": 425,
+          "MID15": 253,
+          "MID13": 483,
+          "H1": 212,
+          "H2": 243,
+          "all_four": 195
+        },
+        "produced": 3630743,
+        "detected": 29296,
+        "root_sha256": "0a1cd0e27f9fccfd5b70fdeeee9bdc4c790fa970a8ac5f18bad9de5c38dd2b2d"
+      },
+      "wall_seconds": 6164.6069956489955,
+      "cpu_seconds": 6123.203807999999,
+      "max_child_rss_kib": 167584
+    },
+    {
+      "seed": 261034545,
+      "target": 500,
+      "validation": {
+        "status": "PASS",
+        "generated": 110094,
+        "T1T2": 500,
+        "counts": {
+          "MID1": 231,
+          "MID9": 413,
+          "MID15": 236,
+          "MID13": 477,
+          "H1": 182,
+          "H2": 222,
+          "all_four": 156
+        },
+        "produced": 3357054,
+        "detected": 27031,
+        "root_sha256": "1abaa9ecf3265ed048cc0677b691bb9b4c69c59b5327aea6f5ff281fd4587adc"
+      },
+      "wall_seconds": 9964.59260771799,
+      "cpu_seconds": 9912.25906,
+      "max_child_rss_kib": 156224
+    },
+    {
+      "seed": 261035554,
+      "target": 500,
+      "validation": {
+        "status": "PASS",
+        "generated": 118533,
+        "T1T2": 500,
+        "counts": {
+          "MID1": 258,
+          "MID9": 421,
+          "MID15": 257,
+          "MID13": 467,
+          "H1": 221,
+          "H2": 241,
+          "all_four": 188
+        },
+        "produced": 3574151,
+        "detected": 29018,
+        "root_sha256": "5c4d80ef3c56165476777c84c94344a2192c7d28c8db103b817f94c682d19bf3"
+      },
+      "wall_seconds": 10721.934712737013,
+      "cpu_seconds": 10665.325084,
+      "max_child_rss_kib": 162968
+    },
+    {
+      "seed": 261036563,
+      "target": 500,
+      "validation": {
+        "status": "PASS",
+        "generated": 111345,
+        "T1T2": 500,
+        "counts": {
+          "MID1": 234,
+          "MID9": 419,
+          "MID15": 238,
+          "MID13": 474,
+          "H1": 195,
+          "H2": 224,
+          "all_four": 168
+        },
+        "produced": 3419208,
+        "detected": 27890,
+        "root_sha256": "204cad36f731d488d7bb97ac78f5dc6f2e9046475ce91e7d7a1faef3f82d51b5"
+      },
+      "wall_seconds": 14368.95729705898,
+      "cpu_seconds": 14360.529123,
+      "max_child_rss_kib": 176964
+    },
+    {
+      "seed": 261037572,
+      "target": 500,
+      "validation": {
+        "status": "PASS",
+        "generated": 105427,
+        "T1T2": 500,
+        "counts": {
+          "MID1": 227,
+          "MID9": 445,
+          "MID15": 224,
+          "MID13": 463,
+          "H1": 199,
+          "H2": 207,
+          "all_four": 176
+        },
+        "produced": 3471182,
+        "detected": 28127,
+        "root_sha256": "e534d04ea344a075b2883a9d08435c4217eac1b587141fc4ad40d2bfae159a0f"
+      },
+      "wall_seconds": 13777.372795290983,
+      "cpu_seconds": 13775.537095,
+      "max_child_rss_kib": 164088
+    },
+    {
+      "seed": 261038581,
+      "target": 500,
+      "validation": {
+        "status": "PASS",
+        "generated": 111794,
+        "T1T2": 500,
+        "counts": {
+          "MID1": 236,
+          "MID9": 427,
+          "MID15": 246,
+          "MID13": 473,
+          "H1": 208,
+          "H2": 235,
+          "all_four": 191
+        },
+        "produced": 3515547,
+        "detected": 28412,
+        "root_sha256": "2cdb15c43f1c5d73afddd72bdcafad004845d37cd5277724fbb066dc3829df92"
+      },
+      "wall_seconds": 6164.505753363002,
+      "cpu_seconds": 6134.228145,
+      "max_child_rss_kib": 171368
+    }
+  ]
+}

@@ -1,22 +1,59 @@
-# DRC Hodoscope Geant4 — 시작 안내
+# DRC Hodoscope Geant4
 
-현재 빔테스트 기준 모델은 **original**입니다. T1·T2·H1·H2를 각각 이동·회전하는 설정을 추가했습니다. 기존 형상·재료·광학 조건은 보존하고, 모듈의 섬유·연결부·SiPM을 함께 배치합니다.
+**기준 모델: original · 기준 환경: Geant4 11.4.1 + 저장소 패치 3종**
 
-이 문서는 2026-10-29 KNU 검증 이후의 안내입니다. [README_KO.txt](README_KO.txt)는 최초 이전 당시 기록으로, 그 안의 “KNU에서 아직 미검증” 등 상태 설명은 당시 기준입니다.
+2026-11-02 확인: original의 **뮤온 5,000 T1&T2 트리거(500 × 10잡)** 실행과 결과 검증을 완료했습니다. 현재는 original을 계산 기준으로 사용합니다. light32는 광학 전달 차이가 확인된 비교·개발용 모델입니다.
 
-## 먼저 볼 파일
+여기서 검증 완료는 실행 안정성, 기준 결과 재현, ROOT/채널/광자 집계의 일관성을 뜻합니다. **실제 검출기 데이터와의 물리적 일치나 모든 배치의 정확성을 인증한 것은 아닙니다.** 빔테스트 확대는 보류한 상태입니다.
 
-| 목적 | 파일 |
+## 처음 받았다면
+
+1. [설치부터 첫 실행까지](docs/INSTALL_KO.md)를 따라 환경을 준비합니다.
+2. `python3 scripts/verify_bundle.py`로 기준 소스 묶음을 확인합니다.
+3. 계산 노드에서 original **5트리거**를 실행하고 결과를 검증합니다.
+4. 첫 실행을 통과한 뒤 통계/배치를 변경합니다.
+
+현재 변경 사항이 있는 브랜치를 명시해서 받으세요:
+
+```bash
+git clone --branch knu/initial-validation-20261028 https://github.com/cmirea1234/DRC-Hodoscope-geant4.git
+cd DRC-Hodoscope-geant4
+python3 scripts/verify_bundle.py
+```
+
+Git에는 소스·설정·검증 요약이 들어 있고, Geant4 설치본·바이너리·`.venv`·전체 ROOT 파일은 들어 있지 않습니다. 새 환경에서는 설치/빌드가 필요합니다. 최상위 CMake는 **Geant4 11.4.1을 정확히 요구**하며, 최신 버전으로 임의 교체하면 동일 검증 환경이 아닙니다.
+
+## 무엇을 사용할 수 있나
+
+| 기능 | 현재 상태 | 안내 |
+| --- | --- | --- |
+| original, 기존 배치의 우주선 뮤온 | 현재 기준. 5,000트리거/10잡 모두 정상 종료·ROOT 검증 통과 | [검증 범위](docs/VALIDATION_KO.md) |
+| 독립 seed의 뮤온 Condor 잡 분산·합산 | 기존 환경에서 10잡 검증. 사이트별 자원/경로/seed 설정 필요 | [뮤온 실행 안내](docs/MUON_CAMPAIGNS_KO.md) |
+| 새 체크아웃에서 original 첫 빌드/5트리거 | 별도 환경 파일로 KNU Condor 잡 준비. 과거 빌드/ROOT 경로 불필요 | [첫 실행 안내](docs/INSTALL_KO.md#4-knu에서-첫-condor-시험) |
+| T1/T2/H1/H2 전체 모듈 이동·3D 회전 | original 기반 별도 확장. 기본 회귀 및 대표 변환 시험 통과 | [배치 설정](configs/README_KO.txt) |
+| 명시적 3 GeV pencil 전자빔 | 10개 기본 배치 및 1개 회전 배치 동작 시험만 완료. 확대 보류 | [검증 범위](docs/VALIDATION_KO.md) |
+| light32 | 원통형 original과 광학 전달이 달라 대체 기준으로 채택하지 않음 | [모델 선택 근거](docs/VALIDATION_KO.md) |
+
+회전한 배치의 기존 cosmic 타기팅은 지원하지 않습니다. 실제 새 배치의 모듈 간 간섭, 빔 폭·발산, 자기장, 실측 데이터 비교는 추가 작업입니다.
+
+## 확인된 실행 환경
+
+| 항목 | 검증 환경 |
 | --- | --- |
-| 좌표·회전 규칙, 실행 방법, 제한 사항 | [configs/README_KO.txt](configs/README_KO.txt) |
-| 기본 모듈 배치 | [configs/layouts/modules_baseline.json](configs/layouts/modules_baseline.json) |
-| 3 GeV 전자 10개 입력 | [configs/beams/pencil_3gev_smoke.json](configs/beams/pencil_3gev_smoke.json) |
-| 전체 배치 회전 예제 | [configs/layouts/modules_rigid_example.json](configs/layouts/modules_rigid_example.json) |
-| 위 회전 예제와 짝인 전자 1개 입력 | [configs/beams/pencil_3gev_rigid_example.json](configs/beams/pencil_3gev_rigid_example.json) |
+| 운영체제 | Linux x86_64, AlmaLinux 9 계산 노드 |
+| Geant4 | **11.4.1**, [패치 3종](patches/manifest.json), Release, multithreading OFF |
+| 컴파일러 / C++ | GCC 11.3.0 / C++17 |
+| CMake | 3.30.6 |
+| Python | 3.9.25 |
+| 분석 | NumPy 2.0.2, uproot 5.6.9 — [직접 의존성 버전](requirements-analysis-tested.txt) |
+| 데이터셋 | Geant4 11.4.1에 맞는 12종. 설치 안내의 검사로 확인 |
+| 실행 방식 | 잡당 단일 Geant4 프로세스. 통계 확대는 독립 seed의 여러 잡 |
 
-## 위치와 각도 변경
+CERN ROOT나 Qt GUI는 이 batch 실행에 필요하지 않습니다. 다른 OS·컴파일러·라이브러리 조합은 동일하게 검증됐다고 가정하지 않습니다.
 
-기본 배치 JSON을 복사하고 원하는 모듈의 두 항목을 바꿉니다. 예:
+## 모듈 위치와 각도
+
+[modules_baseline.json](configs/layouts/modules_baseline.json)을 복사해서 수정합니다.
 
 ```json
 "H1": {
@@ -25,68 +62,19 @@
 }
 ```
 
-H1 기준점을 월드 좌표 Z=40 mm로 옮기고 X축으로 10도 기울입니다.
+H1 기준점을 월드 좌표 Z=40 mm로 옮기고 X축으로 10도 기울입니다. 섬유·연결부·SiPM이 함께 움직입니다. 위치는 이동량이 아닌 절대 좌표이고, 회전은 기존 방향에 고정 월드축 X→Y→Z 순으로 추가합니다. 빔 좌표는 별도입니다. 자세한 기준점/월드 크기/지원 범위는 [배치 사용법](configs/README_KO.txt)을 보세요.
 
-- `position_mm`: 이동량이 아니라 모듈 기준점의 **최종 절대 좌표** `[X,Y,Z]`, 단위 mm.
-- `rotation_deg`: original의 기존 방향에 추가하는 회전. 고정 월드축 X→Y→Z 순서, 단위 도.
-- `world_half_size_mm`: 월드 각 축의 반길이. 모듈 전체와 빔 발생점을 포함해야 합니다.
-- 빔 좌표·방향은 별도 JSON에서 설정합니다. 모듈을 옮겨도 빔이 자동으로 따라가지 않습니다.
+이 기능은 `hodoscope-original-layout`을 별도로 빌드해야 합니다. 기본 `hodoscope-original`에 JSON만 전달한다고 적용되지는 않습니다.
 
-배치 JSON만 바꿀 때는 재컴파일할 필요가 없습니다. 예제 배치는 실제 설치 예정 좌표를 뜻하지 않습니다.
+## 결과 읽기
 
-## 현재 KNU 작업 환경에서 실행
+5,000트리거 실행은 2026-10-29 17:21 KST에 완료됐습니다. 생성 뮤온 1,103,858개 중 목표 5,000트리거를 수집했고, 10개 잡 모두 종료 코드 0 및 ROOT 검증 PASS입니다. 네 평면 조건부 응답률은 35.18%, Wilson 95% 구간 33.87~36.51%입니다. 분모는 **T1&T2 트리거**이며 검출기 고유 효율이 아닙니다.
 
-아래 명령은 저장소 최상위에서 실행합니다. 로그인 노드는 준비·제출·상태 확인에 사용하고, 빌드와 시뮬레이션은 Condor 계산 노드에서 수행합니다.
+- [공유 가능한 검증 요약 JSON](reference/knu_muons_5000_summary.json): 독립 seed별 시간·집계·ROOT 해시
+- [검증 범위와 남은 작업](docs/VALIDATION_KO.md)
+- [뮤온 잡 확인과 합산 원칙](docs/MUON_CAMPAIGNS_KO.md)
+- [상세 작업 이력](WORK_PLAN_KO.txt)
 
-```bash
-# 기존 원본 묶음의 해시/설정 확인 — 새 확장 전체의 물리 검증은 아님
-python3 scripts/verify_bundle.py
+큐에서 사라진 것만으로 성공을 판단하지 않습니다. 종료 코드와 `VALIDATION.json`, 캠페인의 `SUCCESS.json`/`SUMMARY.json`을 함께 확인합니다. ROOT 이벤트는 `(seed,event)`로 구분하며 서로 다른 잡의 event 번호를 같은 사건으로 취급하지 않습니다.
 
-# 입력과 제출 파일 준비만
-python3 scripts/submit_knu_layout_beam.py \
-  --layout configs/layouts/modules_baseline.json \
-  --beam configs/beams/pencil_3gev_smoke.json \
-  --prepare-only
-
-# 실제 Condor 제출: 위 명령에서 --prepare-only를 제외
-python3 scripts/submit_knu_layout_beam.py \
-  --layout configs/layouts/modules_baseline.json \
-  --beam configs/beams/pencil_3gev_smoke.json
-```
-
-준비/제출할 때마다 새 `runs/layout_beam/submission_*` 폴더를 만듭니다. 출력된 잡 번호로 `condor_q 잡번호 -nobatch`를 확인합니다. 큐에서 사라졌다는 것만으로 성공을 판단하지 않습니다.
-
-결과는 해당 제출 폴더의 `start_*/run/` 아래에 있습니다.
-
-- `INPUT.json`: 사용한 배치·빔 설정과 입력 해시
-- `layout_placements.jsonl`: 부품별 최종 월드 위치·회전
-- `run.log`, `result.root`: 실행 로그와 결과
-- `VALIDATION.json`: 결과 검증 `PASS` 여부
-- `resources.json`: 실행 시간과 종료 코드
-
-현재 빔 제출 도구는 pencil 전자 1~100개를 지원합니다. 사건 수는 **생성 입자 수**이며 트리거 목표 수가 아닙니다.
-
-## 다른 경로/서버에서 처음 받았을 때
-
-코드만 받은 상태에서는 위 시뮬레이션 제출을 바로 실행할 수 없습니다. Git에는 `build*/`, `.venv/`, `runs/`가 포함되지 않아 설치 환경·검증된 바이너리·과거 ROOT 결과는 별도로 준비해야 합니다.
-
-필요 환경은 Geant4 11.4.1과 데이터셋, 프로젝트의 [Geant4 패치 기록](patches/manifest.json), C++17/CMake 및 [분석 의존성](requirements-analysis.txt)입니다. 현재 KNU 도구에는 `/u/user/chjoung/DRC-Hodoscope-geant4` 경로와 사이트 조건이 들어 있습니다. 다른 경로에서는 `scripts/knu_env.sh`, 배치 실행 셸, `condor/*.sub`의 경로/조건을 검토해야 합니다.
-
-모듈 확장은 다음 순서로 빌드·검증합니다.
-
-1. `scripts/build_original_layout_source.py --output 새_소스_경로`로 original 기반 확장 소스를 생성합니다.
-2. `scripts/knu_layout_check.sh`의 소스 경로를 맞추고 `condor/knu_layout_check.sub`로 계산 노드에서 빌드·검증합니다.
-3. 이 회귀검사는 이전 original 5트리거 ROOT 결과를 참조합니다. 새 환경에서는 기준 실행 결과를 준비하고 `scripts/test_knu_layout.py`의 참조 경로를 맞춥니다.
-4. 검증 통과한 빌드를 `build-knu/original-layout-validated` 링크로 연결한 뒤 빔 제출 도구를 사용합니다.
-
-최상위 CMake만 빌드하면 기존 original/light32가 만들어집니다. 모듈 회전 확장 실행 파일 `hodoscope-original-layout`은 위 별도 소스 생성 절차가 필요합니다.
-
-## 확인한 범위
-
-KNU 잡 2188886에서 기본 5트리거 결과의 `events/channels/loss_summary` 비교 열이 기존 original과 정확히 일치했습니다. 전체 동시 변환과 모듈별 독립 변환 각각 554개 부품의 위치·회전, 246개 코어/센서/트리거 위치 및 광자 전달 시험을 통과했습니다.
-
-잡 2188888에서는 배치와 빔을 함께 회전한 3 GeV 전자 1개를 새 제출 도구로 실행하여 ROOT 검증을 통과했습니다. 이는 동작 확인이며 효율이나 최종 빔테스트 물리를 검증한 것은 아닙니다.
-
-새 배치는 명시적 빔/고정 광자 입력을 지원합니다. 회전한 배치의 기존 cosmic 타기팅, building, 추가 트리거는 지원 범위 밖입니다. 실제 설치 좌표를 정하면 모듈 간 겹침과 빔 경로를 별도 확인해야 합니다.
-
-확장 코드는 [extensions/layout](extensions/layout)에 있고, 원본 `models/`, `macros/`는 보존했습니다. 상세 이력은 [WORK_PLAN_KO.txt](WORK_PLAN_KO.txt)에 있습니다.
+[README_KO.txt](README_KO.txt)는 최초 이전 시점의 동결 기록입니다. 그 안의 “KNU 미검증” 등 상태 설명은 현재 상태가 아닙니다. 현재 사용 안내는 이 README와 `docs/`를 기준으로 합니다.

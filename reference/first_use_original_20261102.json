@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "scope": "Five-trigger aggregate regression, not full bitwise/physical validation",
+  "validation": {
+    "status": "PASS",
+    "generated": 1240,
+    "T1T2": 5,
+    "counts": {
+      "MID1": 3,
+      "MID9": 5,
+      "MID15": 3,
+      "MID13": 5,
+      "H1": 3,
+      "H2": 3,
+      "all_four": 3
+    },
+    "produced": 40188,
+    "detected": 360,
+    "root_sha256": "ec38391c2acc9ba71efa9d11e9f434cf890e74ec85967b3b5a1d905103be9c3f"
+  },
+  "date": "2026-11-02",
+  "environment": {
+    "status": "ENVIRONMENT_PASS",
+    "geant4": "11.4.1",
+    "python": "3.9.25",
+    "numpy": "2.0.2",
+    "uproot": "5.6.9",
+    "compiler": "g++ (GCC) 11.3.0",
+    "cmake": "cmake version 3.30.6",
+    "scope": "Checks environment and patch provenance record, not binary provenance or physical validation",
+    "datasets_checked": 12
+  },
+  "resources": {
+    "wall_seconds": 240.78013897500932,
+    "user_cpu_seconds": 136.025705,
+    "system_cpu_seconds": 0.244192,
+    "max_child_rss_kib": 128996,
+    "returncode": 0,
+    "error": null
+  },
+  "test_scope": "Separate checkout path and fresh original application build; existing verified Geant4 installation and Python venv reused. Geant4 source patch helper separately tested on clean source copies; full toolkit/data download not repeated."
+}

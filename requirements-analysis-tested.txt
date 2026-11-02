@@ -1,0 +1,4 @@
+# Direct dependency versions used for KNU validation (Python 3.9.25).
+# This pins the two direct dependencies, not every transitive dependency.
+numpy==2.0.2
+uproot==5.6.9
